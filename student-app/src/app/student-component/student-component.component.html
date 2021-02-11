@@ -1,0 +1,22 @@
+<mat-card class="studentCard">
+    <div class="data-input">
+        <h1>Add Student Details</h1>
+        <br>
+        <br>
+        <mat-tab-group>
+            <mat-tab label="Student Basics">
+                <div class="Info">
+                    <app-student-basic-info></app-student-basic-info>
+                </div>
+            </mat-tab>
+            <mat-tab label="Student Addresses">
+                <div class="Info">
+                    <app-student-address-info></app-student-address-info>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+        <div class="button">
+            <button mat-flat-button type="button" (click)="goBack();" color="primary">Back</button>
+        </div>
+    </div>
+</mat-card>

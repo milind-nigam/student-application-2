@@ -1,0 +1,20 @@
+h2 {
+    font-weight: 500;
+}
+
+input {
+    background-color: #424242;
+    color: rgb(255, 255, 255);
+    border-style: none !important;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+
+.container>* {
+    flex: 1 1 201px;
+    padding: 5px;
+}

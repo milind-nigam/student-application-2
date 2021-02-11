@@ -1,0 +1,97 @@
+<form [formGroup]="myForm" class="example-form" autocomplete="off" (ngSubmit)="submitForm()" novalidate>
+    <mat-form-field class="example-full-width">
+        <mat-label>Student Name</mat-label>
+        <input matInput formControlName="student_name" required>
+        <mat-error *ngIf="myForm.controls['student_name'].hasError('required')">
+            name is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="myForm.controls['student_name'].hasError('maxlength')">
+            Please keep length less than 56
+        </mat-error>
+        <mat-error *ngIf="
+        myForm.controls['student_name'].hasError('pattern')">
+            Please enter valid name
+        </mat-error>
+
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" required>
+        <mat-error *ngIf="
+        myForm.controls['email'].hasError('email')">
+            Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="myForm.controls['email'].hasError('required')">
+            Email is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="myForm.controls['email'].hasError('maxlength')">
+            Please keep length less than 112
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Mobile Number</mat-label>
+        <input matInput formControlName="mobile" required>
+        <mat-error *ngIf="
+        myForm.controls['mobile'].hasError('required')">mobile is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="
+        myForm.controls['mobile'].hasError('pattern')">Please enter valid mobile number
+        </mat-error>
+        <mat-error *ngIf="myForm.controls['mobile'].hasError('minlength')">
+            Please keep length exactly 10
+        </mat-error>
+        <mat-error *ngIf="myForm.controls['mobile'].hasError('maxlength')">
+            Please keep length exactly 10
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Date Of Birth</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="DOB" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="
+        myForm.controls['DOB'].hasError('required')">DOB is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="myForm.controls['DOB'].hasError('minlength')">
+            Please keep length exactly 10
+        </mat-error>
+        <mat-error *ngIf="myForm.controls['DOB'].hasError('maxlength')">
+            Please keep length exactly 10
+        </mat-error>
+        <mat-error *ngIf="myForm.controls['DOB'].hasError('pattern')">
+            Please enter valid DOB
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Gender</mat-label>
+        <mat-select [(value)]="selected" formControlName="gender">
+            <mat-option value="male">Male</mat-option>
+            <mat-option value="female">Female</mat-option>
+            <mat-option value="other">Other</mat-option>
+        </mat-select>
+        <mat-error *ngIf="
+        myForm.controls['gender'].hasError('required')">gender is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="myForm.controls['gender'].hasError('maxlength')">
+            Please keep length less than 12
+        </mat-error>
+        <mat-error *ngIf="
+        myForm.controls['gender'].hasError('pattern')">Please enter valid gender
+        </mat-error>
+    </mat-form-field>
+    <ng-container *ngIf="selected == 'other'">
+        <mat-label>Other</mat-label>
+        <input matInput formControlName="gender" style="margin-top: 15px;">
+        <hr>
+    </ng-container>
+
+
+    <div>
+        <button mat-flat-button color="primary">Submit</button>
+    </div>
+
+</form>

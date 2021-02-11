@@ -1,0 +1,69 @@
+<form [formGroup]="myForm" class="example-form" autocomplete="off" (ngSubmit)="submitForm()" novalidate>
+    <mat-form-field class="example-full-width">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="address" required>
+        <mat-error *ngIf="myForm.controls['address'].hasError('required')">
+            address is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="myForm.controls['address'].hasError('maxlength')">
+            Please keep length less than 256
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Additional</mat-label>
+        <input matInput formControlName="aditional" required>
+        <mat-error *ngIf="myForm.controls['aditional'].hasError('required')">
+            additional is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="myForm.controls['aditional'].hasError('maxlength')">
+            Please keep length less than 256
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Pin Code</mat-label>
+        <input matInput formControlName="pin_code" required>
+        <mat-error *ngIf="myForm.controls['pin_code'].hasError('required')">
+            pin_code is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="myForm.controls['pin_code'].hasError('minlength')">
+            Please keep length exactly 6
+        </mat-error>
+        <mat-error *ngIf="myForm.controls['pin_code'].hasError('maxlength')">
+            Please keep length exactly 6
+        </mat-error>
+
+        <mat-error *ngIf="
+        myForm.controls['pin_code'].hasError('pattern')">Please enter valid pin code
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>City</mat-label>
+        <input matInput formControlName="city" required>
+        <mat-error *ngIf="
+        myForm.controls['city'].hasError('required')">city is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="myForm.controls['city'].hasError('maxlength')">
+            Please keep length less than 56
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>State</mat-label>
+        <input matInput formControlName="state" required>
+        <mat-error *ngIf="
+        myForm.controls['state'].hasError('required')">state is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="myForm.controls['state'].hasError('maxlength')">
+            Please keep length less than 56
+        </mat-error>
+    </mat-form-field>
+
+    <div>
+        <button mat-flat-button color="primary">Submit</button>
+    </div>
+
+
+</form>

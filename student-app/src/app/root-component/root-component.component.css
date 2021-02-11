@@ -1,0 +1,37 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+a {
+    font-size: 100%;
+}
+
+.studentCard {
+    margin: 40px;
+    background-color: whitesmoke;
+    color: black;
+    font-size: 25px;
+}
+
+.header-menu {
+    height: 80px !important;
+    font-size: 25px;
+}
+
+table {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.mat-header-cell {
+    font-size: 15px
+}
+
+.container {
+    display: flex;
+    margin-top: 15px;
+}
+
+.title {
+    font-weight: bolder;
+}
