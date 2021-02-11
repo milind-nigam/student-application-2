@@ -2,29 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import StudentBasic from '../studentBasic';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { StudentBasicService } from '../student-basic.service';
-import { MAT_DATE_FORMATS } from '@angular/material/core';
 
+import * as _moment from 'moment';
+import { Moment } from 'moment';
 
-export const MY_DATE_FORMATS = {
-  parse: {
-    dateInput: 'DD/MM/YYYY',
-  },
-  display: {
-    dateInput: 'DD/MM/YYYY',
-    monthYearLabel: 'MMMM YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY'
-  },
-};
+const moment = _moment;
 
 
 @Component({
   selector: 'app-student-basic-info',
   templateUrl: './student-basic-info.component.html',
-  styleUrls: ['./student-basic-info.component.css'],
-  providers: [
-    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }
-  ]
+  styleUrls: ['./student-basic-info.component.css']
 })
 export class StudentBasicInfoComponent implements OnInit {
 
@@ -46,7 +34,7 @@ export class StudentBasicInfoComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(112)]),
       // tslint:disable-next-line: max-line-length
       mobile: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('^[0-9]*$')]),
-      DOB: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('/^(0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])[\/\-]\d{4}$/')]),
+      DOB: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
       gender: new FormControl('', [Validators.required, Validators.maxLength(12), Validators.pattern('^[a-zA-Z ]*$')]),
     });
   }
@@ -55,6 +43,10 @@ export class StudentBasicInfoComponent implements OnInit {
       console.log(this.myForm.value);
       this.studentBasicService.addstudentBasic(this.myForm.value)
          .subscribe();
+      const dateOfBirth: Moment = this.myForm.get('DOB').value;
+      console.log(dateOfBirth.toObject());
+      const yearOfBirth = dateOfBirth.toObject().years;
+      console.log('yearOfBirth : ', yearOfBirth);
     }
 
 }
